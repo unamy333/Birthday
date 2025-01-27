@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Animation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ff69b4;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        .flowers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 30px;
+            color: #ff69b4;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(20deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-weight: bold;
+            color: #ff69b4;
+            z-index: 3;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button onclick="wishBirthday()">Enter</button>
+    </div>
+
+    <div class="flowers">
+        <div class="flower" style="top: 10%; left: 20%;">🌸</div>
+        <div class="flower" style="top: 30%; left: 50%;">🌼</div>
+        <div class="flower" style="top: 50%; left: 10%;">🌺</div>
+        <div class="flower" style="top: 70%; left: 80%;">🌻</div>
+        <div class="flower" style="top: 90%; left: 40%;">💮</div>
+    </div>
+
+    <div class="message" id="birthdayMessage">Happy Birthday, <span id="name"></span>!</div>
+
+    <script>
+        function wishBirthday() {
+            const name = document.getElementById('nameInput').value;
+            if (name) {
+                document.getElementById('name').textContent = name;
+                document.getElementById('birthdayMessage').style.display = 'block';
+                document.querySelector('.container').style.display = 'none';
+            } else {
+                alert('Please enter your name!');
+            }
+        }
+    </script>
+</body>
+</html>
